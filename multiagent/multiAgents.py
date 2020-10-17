@@ -72,16 +72,16 @@ class ReflexAgent(Agent):
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
         "*** YOUR CODE HERE ***"
-        istances = []
+        instances = []
         score = 0
-        glist = [manhattanDistance(newPos, i.getPosition()) for i in newGhostStates]
-        gav = reduce(lambda x, y: x + y, glist) / len(glist)
+        ghostList = [manhattanDistance(newPos, i.getPosition()) for i in newGhostStates]
+        gav = reduce(lambda x, y: x + y, ghostList) / len(ghostList)
         if not newFood.asList():
             score = 0
         else:
             for x2 in newFood.asList():
-                istances.append(manhattanDistance(newPos, x2))
-                score = min(istances)
+                instances.append(manhattanDistance(newPos, x2))
+                score = min(instances)
         return successorGameState.getScore() + min(newScaredTimes) + 1 / (score + 0.1) - (1 / (gav + 0.1))
 
 
